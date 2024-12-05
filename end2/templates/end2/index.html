@@ -1,0 +1,234 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThinkAI 2024 Conference</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script> <!-- For icons -->
+    <style>
+        /* Additional CSS for smooth scrolling, animation, etc. */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background-color: #1E3A8A; /* Dark blue */
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: white;
+            font-size: 1.2em;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #F59E0B; /* Orange */
+        }
+
+        section {
+            padding: 50px 20px;
+            margin: 20px;
+            border-radius: 8px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        section h2 {
+            font-size: 2em;
+            color: #1E3A8A;
+        }
+
+        section p {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        .speakers {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .speaker {
+            width: 250px;
+            text-align: center;
+            margin: 10px;
+        }
+
+        .speaker img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .sponsors img {
+            width: 150px;
+            margin: 10px;
+        }
+
+        #contact input, #contact textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        #contact button {
+            background-color: #1E3A8A;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #contact button:hover {
+            background-color: #F59E0B;
+        }
+
+        .footer {
+            background-color: #1E3A8A;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="{% static 'images/logo.png' %}" alt="ThinkAI 2024 Logo" style="max-width: 150px;">
+        </div>
+        <h1>Welcome to ThinkAI 2024 Conference</h1>
+        <nav>
+            <ul>
+                <li><a href="#about" class="scroll-link">About</a></li>
+                <li><a href="#schedule" class="scroll-link">Schedule</a></li>
+                <li><a href="#speakers" class="scroll-link">Speakers</a></li>
+                <li><a href="#sponsors" class="scroll-link">Sponsors</a></li>
+                <li><a href="#contact" class="scroll-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="about">
+        <h2>About the Conference</h2>
+        <p>The ThinkAI 2024 conference brings together the best minds in Artificial Intelligence from across the globe. Our mission is to foster innovation and collaboration in the AI space.</p>
+    </section>
+
+    <section id="schedule">
+        <h2>Conference Schedule</h2>
+        <ul>
+            <li>9:00 AM - 10:00 AM: Keynote Address</li>
+            <li>10:30 AM - 12:00 PM: AI Workshops</li>
+            <li>12:00 PM - 1:30 PM: Lunch Break</li>
+            <li>2:00 PM - 4:00 PM: Panel Discussions</li>
+            <li>4:30 PM - 5:30 PM: Networking Session</li>
+        </ul>
+    </section>
+
+    <section id="speakers">
+        <h2>Our Speakers</h2>
+        <div class="speakers">
+            <div class="speaker">
+                <img src="{% static 'images/speaker1.jpg' %}" alt="Speaker 1">
+                <h3>Dr. koneru</h3>
+                <p>AI Researcher at XYZ University</p>
+            </div>
+            <div class="speaker">
+                <img src="{% static 'images/speaker2.jpg' %}" alt="Speaker 2">
+                <h3>Prof. John Doe</h3>
+                <p>Chief Scientist at ABC Corp</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="sponsors">
+        <h2>Our Sponsors</h2>
+        <div class="sponsors">
+            <img src="{% static 'images/sponsor1.jpeg' %}" alt="Sponsor 1">
+            <img src="{% static 'images/sponsor2.jpeg' %}" alt="Sponsor 2">
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <form action="#" method="POST" id="contactForm">
+            {% csrf_token %}
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2024 ThinkAI Conference. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation
+        const scrollLinks = document.querySelectorAll('.scroll-link');
+        
+        scrollLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                window.scrollTo({
+                    top: targetElement.offsetTop - 60, // Offset for fixed header
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Form validation
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function(e) {
+            const name = contactForm.querySelector('input[name="name"]').value;
+            const email = contactForm.querySelector('input[name="email"]').value;
+            const message = contactForm.querySelector('textarea[name="message"]').value;
+
+            if (!name || !email || !message) {
+                alert('Please fill out all fields before submitting!');
+                e.preventDefault(); // Prevent form submission if validation fails
+            } else {
+                alert('Message sent successfully!');
+            }
+        });
+    </script>
+
+</body>
+</html>
